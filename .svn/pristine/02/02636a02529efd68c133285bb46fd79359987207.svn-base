@@ -1,0 +1,29 @@
+package com.blogspot.practicegoodtheory.testurl;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+/**
+ * Created by dcooper on 7/11/2015.
+ */
+public class CheckBootReceiver extends BroadcastReceiver
+{
+
+    @Override
+    public void onReceive(Context context, Intent intent)
+    {
+            if (AppPreferences.isOn(context))
+            {
+                Log.i(this.getClass().getName(), "******************* Boot Received ****** Will schedule alarm ******  "+intent.getClass().getName());
+                CheckAlarmReceiver.scheduleAlarm(context);
+            }
+            else
+            {
+                Log.i(this.getClass().getName(), "******************* Boot Received ****** No alarm ... paused ******  " + intent.getClass().getName());
+            }
+
+    }
+
+}

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestUrl</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="in_url">URL</string>
+    <string name="in_frequency">Frequency (in minutes)</string>
+
+</resources>

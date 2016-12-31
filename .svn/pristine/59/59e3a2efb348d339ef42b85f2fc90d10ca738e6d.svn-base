@@ -1,0 +1,19 @@
+<resources>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+    <string name="check_title_display_name">Checking</string>
+    <string name="is_on_display_name">On / Off</string>
+    <string name="urlName_title_display_name">URL</string>
+    <string name="searchString_title_display_name">Search for</string>
+    <string name="checkFrequency_title_display_name">Check every N minutes</string>
+    <string name="phoneNumber_title_display_name">Phone number (for SMS)</string>
+    <string name="notify_title_display_name">Notifications</string>
+
+
+
+
+</resources>

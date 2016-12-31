@@ -1,0 +1,58 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_alignParentBottom="true"
+              android:layout_marginRight="65dp"
+              android:layout_marginEnd="65dp"
+              android:background="#186539"
+              android:layout_alignParentEnd="false"
+              android:layout_centerInParent="true"
+              android:gravity="center_vertical|center_horizontal">
+
+
+
+    <Button
+        android:id="@+id/buttonStartChecking"
+
+        android:text="Start Checking"
+        android:textColor="#FAF5F5"
+        android:textSize="30sp"
+
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/buttonshape"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        />
+
+    <Button
+
+        android:id="@+id/buttonStopChecking"
+
+
+        android:text="Stop"
+        android:textColor="#FAF5F5"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/buttonshape"
+        />
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+

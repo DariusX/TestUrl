@@ -1,0 +1,52 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="isOn"
+        android:title="@string/is_on_display_name"
+        android:summaryOn="Checking is On"
+        android:summaryOff="Paused... will not check" />
+
+    <EditTextPreference
+        android:key="urlName"
+        android:title="@string/urlName_title_display_name"
+        android:defaultValue="http://www.google.com"
+        android:selectAllOnFocus="true"
+        android:inputType="textUri"
+        android:singleLine="true"
+        android:maxLines="1" />
+
+    <EditTextPreference
+        android:key="searchString"
+        android:title="@string/searchString_title_display_name"
+        android:defaultValue=""
+        android:selectAllOnFocus="true"
+        android:inputType="text"
+        android:singleLine="true"
+        android:maxLines="1" />
+
+    <EditTextPreference
+        android:key="checkFrequency"
+        android:title="@string/checkFrequency_title_display_name"
+        android:defaultValue="15"
+        android:selectAllOnFocus="true"
+        android:inputType="number"
+        android:singleLine="true"
+        android:maxLines="1" />
+
+    <SwitchPreference
+        android:key="notify"
+        android:title="@string/notify_title_display_name"
+        android:summaryOn="Send Notifications"
+        android:summaryOff="Do not send Notifications" />
+
+    <EditTextPreference
+        android:key="phoneNumber"
+        android:title="@string/phoneNumber_title_display_name"
+        android:defaultValue="555-555-1212"
+        android:selectAllOnFocus="true"
+        android:inputType="phone"
+        android:singleLine="true"
+        android:maxLines="1" />
+
+
+</PreferenceScreen>

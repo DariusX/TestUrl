@@ -1,0 +1,86 @@
+package com.blogspot.practicegoodtheory.testurl;
+
+import android.app.IntentService;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
+import android.telephony.SmsManager;
+import android.util.Log;
+
+import com.blogspot.practicegoodtheory.core.StringResultHandler;
+
+/**
+ * Created by dcooper on 7/14/2015.
+ */
+public class UrlCheckerService extends IntentService implements StringResultHandler
+{
+    public UrlCheckerService()
+    {
+        super("UrlCheckerService");
+    }
+
+
+    @Override
+    protected void onHandleIntent(Intent intent)
+    {
+        Log.i(this.getClass().getName(), "******************* onHandleIntent *********************  ");
+
+        String urlName =  AppPreferences.getUrlName(getApplicationContext());
+        String searchString =  AppPreferences.getSearchString(getApplicationContext());
+
+        if (urlName==null || urlName.isEmpty())
+        {
+            Log.i(this.getClass().getName(), "******************* URL is blank. Stop *********************  ");
+            return;
+        }
+
+        final UrlChecker urlChecker = new UrlChecker(this, urlName, searchString);
+        new Thread(urlChecker).start();
+
+    }
+
+    @Override
+    public void handleStringResult(String result)
+    {
+        notifyUser(getApplicationContext(), result);
+    }
+
+    private void notifyUser(Context context, String msg)
+    {
+        //TODO: we could make this conditional on a Setting
+        CheckAlarmReceiver.stopAlarm(getApplicationContext());
+
+        if (msg==null || msg.isEmpty())
+        {
+            msg = "URL check failed";
+        }
+        Log.i(this.getClass().getName(), "**********  ********* " + msg + "  **********  ***********");
+
+        String phoneNumber =  AppPreferences.getPhoneNumber(context);
+
+        if (phoneNumber==null || phoneNumber.isEmpty())
+        {
+            Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(context)
+                            .setSmallIcon(R.drawable.notification_icon)
+                            .setContentTitle("URL check failed")
+                            .setContentText(msg)
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setSound(notificationSound);
+            NotificationManager mNotificationManager =
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            // mId allows you to update the notification later on.
+            mNotificationManager.notify(1, mBuilder.build());
+        }
+        else
+        {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
+        }
+
+      }
+}
